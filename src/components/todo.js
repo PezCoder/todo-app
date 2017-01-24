@@ -1,28 +1,45 @@
 import React from 'react';
 import TodoList from './todoList';
 import NewTodo from './newTodo';
+import { todoStatus } from '../constants.js';
 
 class Todo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       'todos': [
-        { id: 1, name: 'Get groceries' },
-        { id: 2, name: 'Bhalu ko khilao' }
+        { id: 1, name: 'Get groceries',   status: todoStatus.active},
+        { id: 2, name: 'Bhalu ko khilao', status: todoStatus.active}
       ]
     };
 
     this.addTodo = this.addTodo.bind(this);
+    this.markCompleted = this.markCompleted.bind(this);
   }
 
   addTodo(name) {
     var todos = this.state.todos;
     var concatTodos = todos.concat({
       id: todos.length + 1,
-      name
+      name,
+      status: todoStatus.active
     });
     this.setState({
       todos: concatTodos
+    });
+  }
+
+  markCompleted(todoToMark) {
+    let todos = this.state.todos;
+    todos.map(function(eachTodo) {
+      if (eachTodo.id === todoToMark.id) {
+        todoToMark.status = todoStatus.completed;
+        return todoToMark;
+      }
+    });
+
+    this.setState({
+      todos
     });
   }
 
@@ -30,7 +47,7 @@ class Todo extends React.Component {
     return (
       <div>
         <NewTodo addTodo={this.addTodo} />
-        <TodoList items={this.state.todos} />
+        <TodoList filterType="ACTIVE" markCompleted={this.markCompleted} items={this.state.todos} />
       </div>
     );
   }

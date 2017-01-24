@@ -3,10 +3,13 @@ import ListItem from './listItem';
 
 class TodoList extends React.Component {
   render() {
-    let items = this.props.items;
+    let { items, markCompleted, filterType } = this.props;
+    let filteredItems = items.filter(function(eachTodo) {
+      return eachTodo.status === filterType;
+    });
     return (
       <div className="all-items">
-        {items.map((item) => <ListItem item={item} key={item.id} />)}
+        {filteredItems.map((item) => <ListItem markCompleted={ markCompleted } item={item} key={item.id} />)}
       </div>
     );
   }

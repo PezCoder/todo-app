@@ -2,11 +2,14 @@ import React from 'react';
 
 class ListItem extends React.Component {
   render() {
-    const {name} = this.props.item;
+    const {item, markCompleted} = this.props;
     return (
-      <p className="each-item">
-        {name}
-      </p>
+      <div>
+        <i onClick={ () => markCompleted(item) } className="fa fa-check"></i>
+        <p className="each-item">
+          {item.name}
+        </p>
+      </div>
     );
   }
 }
