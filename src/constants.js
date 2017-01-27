@@ -1,4 +1,5 @@
-export const todoStatus = {
-  'active'   : 'ACTIVE',
-  'completed': 'COMPLETED'
+export const filters = {
+  'all'      : 'all',
+  'active'   : 'active',
+  'completed': 'completed'
 };
