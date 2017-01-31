@@ -14,3 +14,12 @@ body {
 i {
   cursor: pointer;
 }
+
+.each-list-item:hover .each-item-cross {
+  opacity: 1;
+
+}
+.each-item-cross {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}

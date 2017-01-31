@@ -3,7 +3,7 @@ import { filters } from '../constants';
 
 class ListItem extends React.Component {
   render() {
-    const {item, markCompleted} = this.props;
+    const {item, markCompleted, deleteItem} = this.props;
     let itemNameTag;
 
     if(item.status === filters.completed) {
@@ -21,9 +21,10 @@ class ListItem extends React.Component {
     }
 
     return (
-      <div>
+      <div className="each-list-item">
         <i onClick={ () => markCompleted(item) } className="fa fa-check"></i>
         { itemNameTag }
+        <i onClick={ () => deleteItem(item) } className="fa fa-times each-item-cross"></i>
       </div>
     );
   }

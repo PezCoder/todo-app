@@ -21,12 +21,15 @@ class Todo extends React.Component {
     this.markCompleted = this.markCompleted.bind(this);
     this.changeActiveFilter = this.changeActiveFilter.bind(this);
     this.clearCompletedItems = this.clearCompletedItems.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   addTodo(name) {
     let todos = this.state.todos;
+    let lastTodo = todos[todos.length - 1];
+    let nextTodoId = lastTodo.id + 1; // assuming the last todo has the highest id
     let concatTodos = todos.concat({
-      id: todos.length + 1,
+      id: nextTodoId,
       name,
       status: filters.active
     });
@@ -39,6 +42,7 @@ class Todo extends React.Component {
     let todos = this.state.todos;
     todos.map(function(eachTodo) {
       if (eachTodo.id === todoToMark.id) {
+        // Todo: This is updating the actualy todos array becoz todoToMark is a reference to that object
         todoToMark.status = filters.completed;
         return todoToMark;
       }
@@ -68,13 +72,22 @@ class Todo extends React.Component {
   clearCompletedItems() {
     let todos = this.state.todos;
     let activeTodos = todos.filter(function(eachTodo) {
-      if(eachTodo.status !== filters.completed) {
-        return true;
-      }
+      return eachTodo.status !== filters.completed;
     });
 
     this.setState({
       'todos': activeTodos
+    });
+  }
+
+  deleteItem(todoToDelete) {
+    let todos = this.state.todos;
+    let filteredTodos = todos.filter(function(eachTodo) {
+      return eachTodo.id !== todoToDelete.id;
+    });
+
+    this.setState({
+      'todos': filteredTodos
     });
   }
 
@@ -86,7 +99,8 @@ class Todo extends React.Component {
     return (
       <div>
         <NewTodo addTodo={this.addTodo} />
-        <TodoList activeFilter={this.state.activeFilter} markCompleted={this.markCompleted} items={todos} />
+        <TodoList activeFilter={this.state.activeFilter} markCompleted={this.markCompleted}
+          deleteItem={this.deleteItem} items={todos} />
         <ItemsLeft count={noOfActiveItems} />
         <TodoFilter changeActiveFilter={this.changeActiveFilter} activeFilter={this.state.activeFilter} />
         { noOfCompletedItems > 0 && <ClearItems clearCompletedItems={this.clearCompletedItems} /> }
