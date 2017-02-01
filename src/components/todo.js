@@ -22,6 +22,7 @@ class Todo extends React.Component {
     this.changeActiveFilter = this.changeActiveFilter.bind(this);
     this.clearCompletedItems = this.clearCompletedItems.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.updateTodoText = this.updateTodoText.bind(this);
   }
 
   addTodo(name) {
@@ -50,6 +51,24 @@ class Todo extends React.Component {
 
     this.setState({
       todos
+    });
+  }
+
+  updateTodoText(todoToUpdate, newText) {
+    let todos = this.state.todos;
+    let updatedTodos = todos.map(function(eachTodo) {
+      if (eachTodo.id === todoToUpdate.id) {
+        let updatedTodo = Object.assign({}, todoToUpdate, {
+          'name': newText
+        });
+        return updatedTodo;
+      }
+
+      return eachTodo;
+    });
+
+    this.setState({
+      todos: updatedTodos
     });
   }
 
@@ -100,7 +119,7 @@ class Todo extends React.Component {
       <div>
         <NewTodo addTodo={this.addTodo} />
         <TodoList activeFilter={this.state.activeFilter} markCompleted={this.markCompleted}
-          deleteItem={this.deleteItem} items={todos} />
+          deleteItem={this.deleteItem} items={todos} updateTodoText={this.updateTodoText} />
         <ItemsLeft count={noOfActiveItems} />
         <TodoFilter changeActiveFilter={this.changeActiveFilter} activeFilter={this.state.activeFilter} />
         { noOfCompletedItems > 0 && <ClearItems clearCompletedItems={this.clearCompletedItems} /> }
