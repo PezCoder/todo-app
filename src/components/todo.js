@@ -21,7 +21,7 @@ class Todo extends React.Component {
     this.changeActiveFilter  = this.changeActiveFilter.bind(this);
     this.clearCompletedItems = this.clearCompletedItems.bind(this);
     this.updateTodoWith      = this.updateTodoWith.bind(this);
-    this.markCompleted       = this.markCompleted.bind(this);
+    this.toggleStatus        = this.toggleStatus.bind(this);
     this.updateTodoText      = this.updateTodoText.bind(this);
   }
 
@@ -55,9 +55,10 @@ class Todo extends React.Component {
     });
   }
 
-  markCompleted(todoToMark) {
+  toggleStatus(todoToMark) {
+    var toggledStatus = todoToMark.status === filters.active ? filters.completed : filters.active;
     this.updateTodoWith(todoToMark, {
-      'status': filters.completed
+      'status': toggledStatus
     });
   }
 
@@ -113,7 +114,7 @@ class Todo extends React.Component {
     return (
       <div>
         <NewTodo addTodo={this.addTodo} />
-        <TodoList activeFilter={this.state.activeFilter} markCompleted={this.markCompleted}
+        <TodoList activeFilter={this.state.activeFilter} toggleStatus={this.toggleStatus}
           deleteItem={this.deleteItem} items={todos} updateTodoText={this.updateTodoText} />
         <ItemsLeft count={noOfActiveItems} />
         <TodoFilter changeActiveFilter={this.changeActiveFilter} activeFilter={this.state.activeFilter} />

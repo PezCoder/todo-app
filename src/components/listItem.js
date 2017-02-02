@@ -29,7 +29,7 @@ class ListItem extends React.Component {
   }
 
   render() {
-    const {item, markCompleted, deleteItem} = this.props,
+    const {item, toggleStatus, deleteItem} = this.props,
       isEditing = this.state.isEditing;
     let itemNameTag;
     let itemEditTag = (
@@ -54,9 +54,11 @@ class ListItem extends React.Component {
       );
     }
 
+    let itemClassName = (item.status === filters.completed) ? 'fa fa-check' : 'fa fa-circle-o';
+
     return (
       <div className="each-list-item">
-        <i onClick={ () => markCompleted(item) } className="fa fa-check"></i>
+        <i onClick={ () => toggleStatus(item) } className={itemClassName}></i>
         { isEditing ? itemEditTag : itemNameTag }
         <i onClick={ () => deleteItem(item) } className="fa fa-times each-item-cross"></i>
       </div>

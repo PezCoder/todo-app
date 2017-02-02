@@ -4,7 +4,7 @@ import { filters } from '../constants.js';
 
 class TodoList extends React.Component {
   render() {
-    let { items, markCompleted, activeFilter, deleteItem, updateTodoText } = this.props;
+    let { items, toggleStatus, activeFilter, deleteItem, updateTodoText } = this.props;
     let filteredItems = items.filter(function(eachTodo) {
       return eachTodo.status === activeFilter;
     });
@@ -12,7 +12,7 @@ class TodoList extends React.Component {
 
     return (
       <div className="all-items">
-        {itemsToRender.map((item) => <ListItem markCompleted={ markCompleted } deleteItem={ deleteItem } item={item} key={item.id} updateTodoText={updateTodoText} />)}
+        {itemsToRender.map((item) => <ListItem toggleStatus={ toggleStatus } deleteItem={ deleteItem } item={item} key={item.id} updateTodoText={updateTodoText} />)}
       </div>
     );
   }
