@@ -8,6 +8,7 @@ class ListItem extends React.Component {
       isEditing: false
     };
     this.makeTheFieldEditable = this.makeTheFieldEditable.bind(this);
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
   }
 
   makeTheFieldEditable() {
@@ -18,12 +19,21 @@ class ListItem extends React.Component {
     });
   }
 
+  onSubmitHandler(event, item) {
+    this.props.updateTodoText(item, this.editInput.value);
+    this.setState({
+      'isEditing': false
+    });
+
+    event.preventDefault();
+  }
+
   render() {
-    const {item, markCompleted, deleteItem, updateTodoText} = this.props,
+    const {item, markCompleted, deleteItem} = this.props,
       isEditing = this.state.isEditing;
     let itemNameTag;
     let itemEditTag = (
-      <form className="each-item" onSubmit={() => updateTodoText(item, this.editInput.value)}>
+      <form className="each-item" onSubmit={(event) => this.onSubmitHandler(event, item)}>
         <input type="text" ref={(editInput) => this.editInput = editInput} required />
       </form>
     );

@@ -17,12 +17,12 @@ class Todo extends React.Component {
       'activeFilter': 'all'
     };
 
-    this.addTodo = this.addTodo.bind(this);
-    this.markCompleted = this.markCompleted.bind(this);
-    this.changeActiveFilter = this.changeActiveFilter.bind(this);
+    this.addTodo             = this.addTodo.bind(this);
+    this.changeActiveFilter  = this.changeActiveFilter.bind(this);
     this.clearCompletedItems = this.clearCompletedItems.bind(this);
-    this.deleteItem = this.deleteItem.bind(this);
-    this.updateTodoText = this.updateTodoText.bind(this);
+    this.updateTodoWith      = this.updateTodoWith.bind(this);
+    this.markCompleted       = this.markCompleted.bind(this);
+    this.updateTodoText      = this.updateTodoText.bind(this);
   }
 
   addTodo(name) {
@@ -39,28 +39,11 @@ class Todo extends React.Component {
     });
   }
 
-  markCompleted(todoToMark) {
-    let todos = this.state.todos;
-    todos.map(function(eachTodo) {
-      if (eachTodo.id === todoToMark.id) {
-        // Todo: This is updating the actualy todos array becoz todoToMark is a reference to that object
-        todoToMark.status = filters.completed;
-        return todoToMark;
-      }
-    });
-
-    this.setState({
-      todos
-    });
-  }
-
-  updateTodoText(todoToUpdate, newText) {
+  updateTodoWith(todoToUpdate, updatedObject) {
     let todos = this.state.todos;
     let updatedTodos = todos.map(function(eachTodo) {
       if (eachTodo.id === todoToUpdate.id) {
-        let updatedTodo = Object.assign({}, todoToUpdate, {
-          'name': newText
-        });
+        let updatedTodo = Object.assign({}, todoToUpdate, updatedObject);
         return updatedTodo;
       }
 
@@ -69,6 +52,18 @@ class Todo extends React.Component {
 
     this.setState({
       todos: updatedTodos
+    });
+  }
+
+  markCompleted(todoToMark) {
+    this.updateTodoWith(todoToMark, {
+      'status': filters.completed
+    });
+  }
+
+  updateTodoText(todoToUpdate, newText) {
+    this.updateTodoWith(todoToUpdate, {
+      'name': newText
     });
   }
 
