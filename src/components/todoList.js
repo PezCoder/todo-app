@@ -1,14 +1,13 @@
 import React from 'react';
 import ListItem from './listItem';
-import { filters } from '../constants.js';
 
 class TodoList extends React.Component {
   render() {
-    let { items, toggleStatus, activeFilter, deleteItem, updateTodoText } = this.props;
+    let { items, toggleStatus, filterType, deleteItem, updateTodoText } = this.props;
     let filteredItems = items.filter(function(eachTodo) {
-      return eachTodo.status === activeFilter;
+      return eachTodo.status === filterType;
     });
-    let itemsToRender = activeFilter === filters.all ? items : filteredItems;
+    let itemsToRender = filterType ? filteredItems : items;
 
     return (
       <div className="all-items">

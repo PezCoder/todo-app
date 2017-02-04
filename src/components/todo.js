@@ -13,12 +13,10 @@ class Todo extends React.Component {
       'todos': [
         { id: 1, name: 'Get groceries',   status: filters.active},
         { id: 2, name: 'Bhalu ko khilao', status: filters.active}
-      ],
-      'activeFilter': 'all'
+      ]
     };
 
     this.addTodo             = this.addTodo.bind(this);
-    this.changeActiveFilter  = this.changeActiveFilter.bind(this);
     this.clearCompletedItems = this.clearCompletedItems.bind(this);
     this.updateTodoWith      = this.updateTodoWith.bind(this);
     this.toggleStatus        = this.toggleStatus.bind(this);
@@ -68,12 +66,6 @@ class Todo extends React.Component {
     });
   }
 
-  changeActiveFilter(activeFilter) {
-    this.setState({
-      'activeFilter': activeFilter
-    });
-  }
-
   calculateNoOfActiveItems(todos) {
     return todos.reduce(function(totalCount, todo) {
       if(todo.status === filters.active) {
@@ -110,14 +102,15 @@ class Todo extends React.Component {
     let todos = this.state.todos;
     let noOfActiveItems = this.calculateNoOfActiveItems(todos);
     let noOfCompletedItems = todos.length - this.calculateNoOfActiveItems(todos);
+    let { filterType } = this.props.params;
 
     return (
       <div>
         <NewTodo addTodo={this.addTodo} />
-        <TodoList activeFilter={this.state.activeFilter} toggleStatus={this.toggleStatus}
+        <TodoList filterType={filterType} toggleStatus={this.toggleStatus}
           deleteItem={this.deleteItem} items={todos} updateTodoText={this.updateTodoText} />
         <ItemsLeft count={noOfActiveItems} />
-        <TodoFilter changeActiveFilter={this.changeActiveFilter} activeFilter={this.state.activeFilter} />
+        <TodoFilter />
         { noOfCompletedItems > 0 && <ClearItems clearCompletedItems={this.clearCompletedItems} /> }
       </div>
     );
