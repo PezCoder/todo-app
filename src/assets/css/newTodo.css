@@ -1,0 +1,34 @@
+.new-todo {
+  outline: 0;
+  font-size: 40px;
+  padding: 19px 20px;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 39px;
+  font-weight: lighter;
+  border: 1px solid #F4DECB;
+  transition: box-shadow 0.3s ease;
+}
+.new-todo-form {
+  position: relative;
+}
+
+.new-todo:active, .new-todo:focus {
+  box-shadow: 0 0 28px 5px #F4DECB
+}
+
+.c-r {
+  font-size: 19px;
+  position: absolute;
+  right: 385px;
+  bottom: 31px;
+  color: #cacaca;
+  font-weight: lighter;
+  transition: all 0.3s ease;
+  transform: translateX(10px);
+  opacity: 0;
+}
+.c-r.visible {
+  opacity: 1;
+  transform: translateX(0);
+}

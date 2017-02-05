@@ -105,7 +105,8 @@ class Todo extends React.Component {
     let { filterType } = this.props.params;
 
     return (
-      <div>
+      <div className="container">
+        <h1 className="main-heading">Todo</h1>
         <NewTodo addTodo={this.addTodo} />
         <TodoList filterType={filterType} toggleStatus={this.toggleStatus}
           deleteItem={this.deleteItem} items={todos} updateTodoText={this.updateTodoText} />
