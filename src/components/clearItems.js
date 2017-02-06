@@ -6,4 +6,8 @@ const ClearItems = (props) => {
   );
 };
 
+ClearItems.propTypes = {
+  clearCompletedItems: React.PropTypes.func
+};
+
 export default ClearItems;

@@ -3,7 +3,7 @@ import ListItem from './listItem';
 
 class TodoList extends React.Component {
   render() {
-    let { items, toggleStatus, filterType, deleteItem, updateTodoText } = this.props;
+    let { items, filterType } = this.props;
     let filteredItems = items.filter(function(eachTodo) {
       return eachTodo.status === filterType;
     });
@@ -11,10 +11,18 @@ class TodoList extends React.Component {
 
     return (
       <div className="all-items">
-        {itemsToRender.map((item) => <ListItem toggleStatus={ toggleStatus } deleteItem={ deleteItem } item={item} key={item.id} updateTodoText={updateTodoText} />)}
+        {itemsToRender.map((item) => <ListItem item={item} key={item.id} {...this.props} />)}
       </div>
     );
   }
 }
+
+TodoList.propTypes = {
+  items          : React.PropTypes.array,
+  toggleStatus   : React.PropTypes.func,
+  filterType     : React.PropTypes.string,
+  deleteItem     : React.PropTypes.func,
+  updateTodoText : React.PropTypes.func
+};
 
 export default TodoList;

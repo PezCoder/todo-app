@@ -18,7 +18,6 @@ class NewTodo extends React.Component {
   }
 
   onSubmit(event) {
-    console.log(this.textInput);
     this.props.addTodo(this.textInput.value);
     this.textInput.value = '';
     this.setState({

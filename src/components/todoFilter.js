@@ -8,6 +8,7 @@ class TodoFilter extends React.Component {
 
     this.filterNames = [];
 
+    // create an array of filter names from filters object
     for (let filterName in filters) {
       if(filters.hasOwnProperty(filterName)) {
         this.filterNames.push(filterName);

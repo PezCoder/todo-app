@@ -6,4 +6,8 @@ const ItemLeft = (props) => {
   );
 };
 
+ItemLeft.propTypes = {
+  count: React.PropTypes.number
+};
+
 export default ItemLeft;

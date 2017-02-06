@@ -66,4 +66,11 @@ class ListItem extends React.Component {
   }
 }
 
+ListItem.propTypes = {
+  item           : React.PropTypes.object,
+  toggleStatus   : React.PropTypes.func,
+  deleteItem     : React.PropTypes.func,
+  updateTodoText : React.PropTypes.func
+};
+
 export default ListItem;
