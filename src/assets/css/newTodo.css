@@ -3,7 +3,6 @@
   font-size: 40px;
   padding: 19px 20px;
   width: 100%;
-  max-width: 700px;
   margin-top: 39px;
   font-weight: lighter;
   border: 1px solid #F4DECB;
@@ -20,7 +19,7 @@
 .c-r {
   font-size: 19px;
   position: absolute;
-  right: 385px;
+  right: 22px;
   bottom: 31px;
   color: #cacaca;
   font-weight: lighter;
