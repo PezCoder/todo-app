@@ -1,5 +1,6 @@
 import React from 'react';
 import { filters } from '../constants';
+import '../assets/css/listItem.css'
 
 class ListItem extends React.Component {
   constructor(props) {
@@ -55,12 +56,13 @@ class ListItem extends React.Component {
     }
 
     let itemClassName = (item.status === filters.completed) ? 'fa fa-check' : 'fa fa-circle-o';
+    itemClassName += ' circle-tick';
 
     return (
       <div className="each-list-item">
         <i onClick={ () => toggleStatus(item) } className={itemClassName}></i>
         { isEditing ? itemEditTag : itemNameTag }
-        <i onClick={ () => deleteItem(item) } className="fa fa-times each-item-cross"></i>
+        <i onClick={ () => deleteItem(item) } className="fa fa-lg fa-times each-item-cross"></i>
       </div>
     );
   }

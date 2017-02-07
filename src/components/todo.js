@@ -21,6 +21,7 @@ class Todo extends React.Component {
     this.updateTodoWith      = this.updateTodoWith.bind(this);
     this.toggleStatus        = this.toggleStatus.bind(this);
     this.updateTodoText      = this.updateTodoText.bind(this);
+    this.deleteItem          = this.deleteItem.bind(this);
   }
 
   addTodo(name) {

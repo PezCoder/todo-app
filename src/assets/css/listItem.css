@@ -1,0 +1,21 @@
+.each-list-item {
+  background: #94618E;
+  max-width: 700px;
+  color: #F8EEE7;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 17px;
+  font-size: 22px;
+  text-align: left;
+  font-weight: normal;
+  margin-bottom: 10px;
+  border-radius: 2px;
+}
+
+.each-list-item .circle-tick {
+  margin-right: 10px;
+}
+
+.each-item-cross {
+  float: right;
+}
