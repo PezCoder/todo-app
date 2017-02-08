@@ -16,3 +16,6 @@
 .each-filter a.active {
   text-decoration: underline;
 }
+.each-filter a:focus {
+  color: #94618e;
+}

@@ -1,12 +1,18 @@
 .each-list-item {
-  background: #94618E;
+  background: linear-gradient(to right,#94618E, #49274A );
   color: #F8EEE7;
   padding: 17px;
   font-size: 22px;
   text-align: left;
   font-weight: normal;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   border-radius: 2px;
+  animation: flip-in 2s ease;
+  transform-style: preserve-3d;
+}
+
+.each-list-item:nth-child(2) {
+  animation-delay: 0;
 }
 
 .each-list-item .circle-tick {
@@ -15,4 +21,21 @@
 
 .each-item-cross {
   float: right;
+}
+
+.each-item {
+  display: inline-block;
+  margin-left: 7px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.each-item-cross {
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.3s ease-in;
+}
+.each-list-item:hover .each-item-cross {
+  opacity: 1;
+  transform: scale(1);
 }

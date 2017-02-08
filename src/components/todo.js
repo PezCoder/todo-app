@@ -109,10 +109,10 @@ class Todo extends React.Component {
       <div className="container">
         <h1 className="main-heading">Todo</h1>
         <NewTodo addTodo={this.addTodo} />
+        {this.props.children}
         <TodoList filterType={filterType} toggleStatus={this.toggleStatus}
           deleteItem={this.deleteItem} items={todos} updateTodoText={this.updateTodoText} />
         <ItemsLeft count={noOfActiveItems} />
-        <TodoFilter />
         { noOfCompletedItems > 0 && <ClearItems clearCompletedItems={this.clearCompletedItems} /> }
       </div>
     );
