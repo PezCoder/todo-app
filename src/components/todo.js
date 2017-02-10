@@ -27,7 +27,7 @@ class Todo extends React.Component {
   addTodo(name) {
     let todos = this.state.todos;
     let lastTodo = todos[todos.length - 1];
-    let nextTodoId = lastTodo.id + 1; // assuming the last todo has the highest id
+    let nextTodoId = lastTodo ? lastTodo.id + 1 : 0; // assuming the last todo has the highest id
     let concatTodos = todos.concat({
       id: nextTodoId,
       name,

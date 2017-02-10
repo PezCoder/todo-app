@@ -1,4 +1,5 @@
 import React from 'react';
+import '../assets/css/itemsLeft.css';
 
 const ItemLeft = (props) => {
   return (
