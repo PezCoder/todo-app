@@ -1,7 +1,6 @@
 # todo-app
 A todo app like the others in the market, built on react but designed differently (I hope).
 
-Purpose is to learn by doing react & todo is the best starting point for that.
 
 ## Take a look
 
