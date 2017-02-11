@@ -11,8 +11,6 @@ class Todo extends React.Component {
     super(props);
     this.state = {
       'todos': [
-        { id: 1, name: 'Get groceries',   status: filters.active},
-        { id: 2, name: 'Bhalu ko khilao', status: filters.active}
       ]
     };
 
