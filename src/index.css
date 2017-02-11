@@ -31,6 +31,16 @@ body {
   text-align: center;
 }
 
+@media only screen and (max-width: 500px) {
+  .main-heading {
+    font-size: 46px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+}
+
 i {
   cursor: pointer;
 }

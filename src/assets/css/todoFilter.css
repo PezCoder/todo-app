@@ -18,3 +18,13 @@
 .each-filter a:focus {
   color: #94618e;
 }
+
+@media only screen and (max-width: 500px) {
+  .todo-filters {
+    margin-top: 13px;
+    margin-bottom: 6px;
+  }
+  .each-filter a {
+    font-size: 12px;
+  }
+}

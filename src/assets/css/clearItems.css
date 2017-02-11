@@ -5,3 +5,10 @@
   cursor: pointer;
   color: #551a8b;
 }
+
+@media only screen and (max-width: 500px) {
+  .clear-items {
+    margin-top: 6px;
+    font-size: 12px;
+  }
+}

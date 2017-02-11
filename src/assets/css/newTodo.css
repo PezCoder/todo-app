@@ -1,7 +1,7 @@
 .new-todo {
   outline: 0;
   font-size: 40px;
-  padding: 19px 20px;
+  padding: 19px 82px 19px 20px;
   width: 100%;
   margin-top: 39px;
   font-weight: lighter;
@@ -30,4 +30,21 @@
 .c-r.visible {
   opacity: 1;
   transform: translateX(0);
+}
+
+@media only screen and (max-width: 500px) {
+  .new-todo {
+    padding: 9px 48px 9px 10px;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .new-todo:active, .new-todo:focus {
+    box-shadow: 0px 0px 9px 2px #F4DECB;
+  }
+
+  .c-r {
+    bottom: 14px;
+    font-size: 13px;
+    right: 11px;
+  }
 }

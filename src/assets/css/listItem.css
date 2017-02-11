@@ -37,3 +37,16 @@
 .each-list-item-animate-enter {
   animation: flip-in 400ms ease;
 }
+
+@media only screen and (max-width: 500px) {
+  .each-list-item {
+    padding: 9px;
+    font-size: 15px;
+  }
+  .each-list-item .circle-tick {
+    margin-right: 0;
+  }
+  .each-item-cross {
+    opacity: 1;
+  }
+}
